@@ -58,11 +58,49 @@ public class Festival {
      * valor enumerado
      *
      */
-    public Mes getMes() {
-        //TODO
-        
-        return null;
-        
+        public Mes getMes() {
+       Mes mes = null;
+       int mesFest = fechaInicio.getMonthValue();
+
+       switch (mesFest){
+           case 1:
+               mes = Mes.ENERO;
+               break;
+           case 2:
+               mes = Mes.FEBRERO;
+               break;
+           case 3:
+               mes = Mes.MARZO;
+               break;
+           case 4:
+               mes = Mes.ABRIL;
+               break;
+           case 5:
+               mes = Mes.MAYO;
+               break;
+           case 6:
+               mes = Mes.JUNIO;
+               break;
+           case 7:
+               mes = Mes.JULIO;
+               break;
+           case 8:
+               mes = Mes.AGOSTO;
+               break;
+           case 9:
+               mes = Mes.SEPTIEMBRE;
+               break;
+           case 10:
+               mes = Mes.OCTUBRE;
+               break;
+           case 11:
+               mes = Mes.NOVIEMBRE;
+               break;
+           case 12:
+               mes = Mes.DICIEMBRE;
+               break;
+       }
+       return mes;
     }
 
     /**
