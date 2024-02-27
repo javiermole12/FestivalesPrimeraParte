@@ -130,7 +130,7 @@ public class Festival {
      *
      * @return true si el festival ya ha concluido
      */
-    public boolean haConcluido(Festival otro) {
+    public boolean haConcluido() {
         return this.fechaInicio.plusDays(duracion).isBefore(LocalDate.now());
     }
 
@@ -141,10 +141,33 @@ public class Festival {
      */
     @Override
     public String toString() {
-       //TODO
-        
-        return null;
-        
+        StringBuilder sb = new StringBuilder();
+        sb.append(nombre).append(" [");
+
+        for (Estilo estilo : estilos) {
+            sb.append(estilo).append(", ");
+        }
+
+        sb.delete(sb.length() - 2, sb.length());
+        sb.append("]").append("\n");
+
+        sb.append(lugar).append("\n");
+
+
+        sb.append(fechaInicio.format(DateTimeFormatter.ofPattern("dd MMM yyyy")));
+
+        if (!haConcluido()) {
+            LocalDate fechaFin = fechaInicio.plusDays(duracion - 1);
+            sb.append(" - ").append(fechaFin.format(DateTimeFormatter.ofPattern("dd MMM yyyy")));
+            long diasRestantes = LocalDate.now().until(fechaFin, ChronoUnit.DAYS);
+            sb.append(" (quedan ").append(diasRestantes).append(" días)");
+        } else {
+            sb.append(" (concluido)");
+        }
+
+        sb.append("\n---------------------------------------------");
+
+        return sb.toString();
     }
 
     /**
