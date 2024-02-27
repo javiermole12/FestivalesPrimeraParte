@@ -46,7 +46,7 @@ public class FestivalesIO {
 
         String nombre = obtenerNombre(partes[0]);
         String lugar = partes[1].trim().toUpperCase();
-        fechaInicio = LocalDate.parse(partes[2], DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        fechaInicio = LocalDate.parse(partes[2].trim(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         int duracion = Integer.parseInt(partes[3].trim());
         HashSet<Estilo> estilos = obtenerEstilos(Arrays.copyOfRange(partes, 4, partes.length));
 
